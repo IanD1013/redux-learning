@@ -1,3 +1,5 @@
+import { compose, pipe } from 'lodash/fp';
+
 function sayHello() {
   return 'Hello, World!';
 }
@@ -28,3 +30,10 @@ const wrapInDiv = str => `<div>${str}</div>`;
 const toLowerCase = str => str.toLowerCase();
 
 const result = wrapInDiv(toLowerCase(trim(input)));
+
+/** Composing and Piping */
+const transform = compose(wrapInDiv, toLowerCase, trim);
+transform(input);
+
+const transform2 = pipe(trim, toLowerCase, wrapInDiv); // list of functions to be executed in order
+transform2(input);
