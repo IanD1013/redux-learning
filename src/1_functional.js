@@ -37,3 +37,23 @@ transform(input);
 
 const transform2 = pipe(trim, toLowerCase, wrapInDiv); // list of functions to be executed in order
 transform2(input);
+
+/** Currying */
+const wrapInSpan = str => `<span>${str}</span>`;
+const wrap = (type, str) => `<${type}>${str}</${type}>`;
+
+const transform3 = pipe(trim, toLowerCase, wrap); // get <javascript>undefined</javascript>
+
+// function add(a, b) {
+//     return a + b;
+// }
+
+function add(a) {
+    return function(b) {
+        return a + b;
+    }
+}
+
+const add2 = a => b => a + b;
+const wrap2 = type => str => `<${type}>${str}</${type}>`;
+const transform4 = pipe(trim, toLowerCase, wrap2('div'));
