@@ -1,4 +1,5 @@
 import { compose, pipe } from 'lodash/fp';
+import { produce } from 'immer';
 
 function sayHello() {
   return 'Hello, World!';
@@ -93,3 +94,12 @@ const removed = numbers.filter(n => n !== 2);
 
 // Updating
 const updated4 = numbers.map(n => (n === 2 ? 20 : n));
+
+/** Immer */
+let book = { title: 'Harry Potter' };
+
+function publish(book) {
+    return produce(book, draftBook => {
+        draftBook.isPublished = true;
+    });
+}
