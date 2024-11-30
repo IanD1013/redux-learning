@@ -3,7 +3,7 @@ import * as actions from './store/bugs';
 
 const store = configureStore();
 
-store.dispatch(actions.bugAdded("Bug 1"));
-store.dispatch(actions.bugAdded("Bug 2"));
-store.dispatch(actions.bugAdded("Bug 3"));
-store.dispatch(actions.bugResolved(1));
+store.dispatch(actions.bugAdded({ description: "Bug 1" }));
+store.dispatch(actions.bugAdded({ description: "Bug 2" }));
+store.dispatch(actions.bugAdded({ description: "Bug 3" }));
+store.dispatch(actions.bugResolved({ id: 1 }));
