@@ -1,5 +1,7 @@
-import store from './store';
-import * as actions from './actions';
+import configureStore from './store/configureStore';
+import * as actions from './store/bugs';
+
+const store = configureStore();
 
 store.dispatch(actions.bugAdded("Bug 1"));
 store.dispatch(actions.bugAdded("Bug 2"));
