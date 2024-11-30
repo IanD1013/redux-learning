@@ -57,3 +57,25 @@ function add(a) {
 const add2 = a => b => a + b;
 const wrap2 = type => str => `<${type}>${str}</${type}>`;
 const transform4 = pipe(trim, toLowerCase, wrap2('div'));
+
+/** Updating Objects */
+const person = { name: 'John' };
+const updated = Object.assign({}, person, { name: 'Bob', age: 30 });
+const updated2 = { ...person, name: 'Bob' };    
+
+const person2 = {
+    name: 'John',
+    address: {
+        country: 'USA',
+        city: 'San Francisco'
+    }
+}
+
+const updated3 = {
+    ...person2,
+    address: {
+        ...person.address,
+        city: 'New York'
+    },
+    name: 'Bob'
+}
