@@ -2,12 +2,13 @@ import configureStore from "./store/configureStore";
 
 const store = configureStore();
 
-store.dispatch((dispatch, getState) => {
-    dispatch({ type: 'bugsReceived', bugs: [1, 2, 3] });
-    console.log(getState());
-})
-
 store.dispatch({
-    type: 'error',
-    payload: { message: 'An error occurred' }
-});
+    type: 'apiRequest',
+    payload: {
+        url: '/bugs',
+        // method: 'get', // default
+        // data: {}, 
+        onSuccess: "bugsReceived", // name of the action that should be dispatched if this operation is successful
+        onError: "apiRequestFailed" // name of the action that should be dispatched if this operation fails
+    }
+})
