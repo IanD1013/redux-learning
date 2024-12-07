@@ -27,7 +27,7 @@ const slice = createSlice({
             const index = bugs.list.findIndex(bug => bug.id === bugId);
             bugs.list[index].userId = userId;
         },
-        bugAdded: (bugs, action) => {
+        bugAdded: (bugs, action) => { // only updates redux store, not the server
             bugs.list.push(action.payload)
         },
         bugResolved: (bugs, action) => {
@@ -37,7 +37,7 @@ const slice = createSlice({
     }
 })
 
-export const { bugAdded, bugResolved, bugAssignedToUser, bugsReceived, bugsRequested, bugsRequestFailed } = slice.actions;
+const { bugAdded, bugResolved, bugAssignedToUser, bugsReceived, bugsRequested, bugsRequestFailed } = slice.actions;
 export default slice.reducer;
 
 // Action Creators
